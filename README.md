@@ -32,8 +32,7 @@
 [데이터보기](https://new.portmis.go.kr/portmis/websquare/websquare.jsp?w2xPath=/portmis/w2/main/index.xml&page=/portmis/w2/cm/sys/UI-PM-MT-001-021.xml&menuId=0045&menuCd=M4735&menuNm=사이트맵)
 
 ## 소스
-* 코드 삽입
-Main 파일만 삽입하였고, 나머지 전체 Code파일은 첨부하였습니다.
+* Main 파일만 삽입하였고, 나머지 전체 Code파일은 첨부하였습니다.
 ~~~python
 """
 부산대학교 통계학과 4학년 박준형
