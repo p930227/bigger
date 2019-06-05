@@ -32,12 +32,62 @@
 [데이터보기](https://new.portmis.go.kr/portmis/websquare/websquare.jsp?w2xPath=/portmis/w2/main/index.xml&page=/portmis/w2/cm/sys/UI-PM-MT-001-021.xml&menuId=0045&menuCd=M4735&menuNm=사이트맵)
 
 ## 소스
-* [링크로 소스 내용 보기](https://github.com/cybermin/python2019/blob/master/tes.py) 
-
 * 코드 삽입
+Main 파일만 삽입하였고, 나머지 전체 Code파일은 첨부하였습니다.
 ~~~python
-items = list(range(1,11))
+"""
+부산대학교 통계학과 4학년 박준형
+분기별 부산항 물동량(Container) Data를 이용한 2019년도 2분기 경제성장률(GDP) 예측
+"""
 
-for i in items:
-    print(i)
+import GDP_Ft as GF
+import Container_Ft as CF
+import GDP_Container_Ft as GCF
+import time_series as TS
+
+from fbprophet import Prophet
+
+
+##### GDP 확인 #####
+GDP_All=input("2006_1분기부터 2019_1분기까지의 GDP를 확인하시겠습니까 (Y/N) ?").upper()
+GF.GDP_All(GDP_All)
+GDP_Y_Q=input("특정 년도/분기의 GDP를 확인하시겠습니까 (Y/N) ?").upper()
+GF.GDP_Y_Q(GDP_Y_Q)
+
+##### Container 확인 #####
+Container_All=input("2006_1분기부터 2019_1분기까지의 Container를 확인하시겠습니까 (Y/N) ?").upper()
+CF.Container_All(Container_All)
+Container_Y_Q=input("특정 년도/분기의 Container를 확인하시겠습니까 (Y/N) ?").upper()
+CF.Container_Y_Q(Container_Y_Q)
+
+
+##### GDP & Container #####
+Plot_Confrim = input("1분기보다 2분기의 경제성장률이 좋았던 적이 있는지 그래프로 확인하시겠습니까 (Y/N) ?").upper()
+GCF.Data_Plot(Plot_Confrim)
+
+
+##### Time Series 전체 기간 #####
+# Value & Graphic
+TS_Confrim = input("Time_Series 모델로 적합한 적합 모델의 Time_Series 그래프와 2019년도 2분기 예측값을 확인하시겠습니까 (Y/N) ?").upper()
+
+if TS_Confrim == 'Y' :
+    Predict_GDP = TS.All_Time(TS_Confrim)    
+    m=Prophet()
+    m.fit(Predict_GDP)
+    future = m.make_future_dataframe(periods=31)
+    forecast = m.predict(future)
+    m.plot(forecast)
+
+
+##### Time Series - 2008(경제대공황)년도 삭제 후 #####
+# Value & Graphic
+TS_Confrim = input("2008년(경제대공황)을 제외하고 적합한 적합 모델의 Time_Series 그래프와 2019년도 2분기 예측값을 확인하시겠습니까 (Y/N) ?").upper()
+
+if TS_Confrim == 'Y' :
+    Predict_GDP = TS.Del_Time(TS_Confrim)    
+    m=Prophet()
+    m.fit(Predict_GDP)
+    future = m.make_future_dataframe(periods=31)
+    forecast = m.predict(future)
+    m.plot(forecast)
 ~~~
