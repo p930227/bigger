@@ -14,11 +14,11 @@
 
 * 개요
 1. Container, GDP, Container & GDP, Time_Series Data 파일생성 : 각각의 파일을 만들고 Main 파일에서 import하여 사용.
-2. 각각의 Data에 대해 필요한 역할을 하는 함수를 각 파일내에 생성 : Main 파일에서 import하여 함수호출.
-3. 전체 Container, GDP를 보여주거나 개별 년도_분기별 Container, GDP를 보여줄 수 있도록 함수 생성.
+2. 각각의 Data에 대해 필요한 역할을 하는 함수를 각 파일내에 생성 : Main 파일에서 import하여 함수 호출.
+3. 전체 Container, GDP를 보여주거나 개별 년도/분기별 Container, GDP를 보여줄 수 있도록 함수 생성.
 4. 위의 3에대한 시각화 & 목적 1 확인
 5. 시계열(Time_Series) 분석을 위해 새롭게 데이터전처리 (index, columns 조정)
-6. Container Data를 GDP Data에 적합
+6. Container Data를 GDP Data에 분기별 적합
 7. 2019년도 2분기 GDP 예측 및 시각화 - 예측 값 및 유의수준 a=0.05(95% C.I)에서 상한과 하한값 도출(목적 2 확인)
 8. '경제대공황(subprime mortgage)'이 일어났던 2008년도의 Data를 이상치로 판단하여 제거 후 재적합 후 위의 7번 수행
 
